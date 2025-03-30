@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color:#ffffff;
+}
+
+/* Left Section - Login Form */
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: #092a3274;
+}
+.forgotPassword {
+  color: #007bff; /* Default Blue */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.forgotPassword:hover {
+  color: #ff4500; /* Changes color on hover (Orange-Red) */
+}
+.signupfree{
+  color: #017cff; /* Default Blue */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.signupfree:hover {
+  color: #ff4500; /* Changes color on hover (Orange-Red) */
+}
+
+.leftSection h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.inputField {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.inputField {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffffab; /* Change this to your preferred color */
+  color: #010101; /* Text color */
+  font-size: 1rem;
+}
+
+.inputField::placeholder {
+  color: #8b8b8b; /* Placeholder text color */
+}
+
+.inputField:focus {
+  border-color: #000000; /* Border color on focus */
+  outline: none;
+  background-color: #f8f9fa; /* Light background when focused */
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.signInBtn {
+  width: 80%;
+  padding: 12px;
+  background: #004faf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.signInBtn:hover {
+  background: #e63939;
+}
+
+
+
+
+.signUp {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+/* Right Section - Full Height Image */
+.rightSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.loginImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

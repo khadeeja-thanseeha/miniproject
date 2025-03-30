@@ -1,0 +1,53 @@
+.container {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+.appointmentTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.appointmentTable th, .appointmentTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.appointmentTable th {
+  background-color: #007bff;
+  color: white;
+}
+
+.appointmentTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+

@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f8f8;
+  }
+  
+  /* Left Section - Login Form */
+  .leftSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: #ffffff;
+  }
+  
+  .leftSection h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .inputField {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .signInBtn {
+    width: 80%;
+    padding: 12px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .signInBtn:hover {
+    background: #e63939;
+  }
+  
+  
+  
+  
+  .signUp {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  /* Right Section - Full Height Image */
+  .rightSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    overflow: hidden;
+  }
+  
+  .loginImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

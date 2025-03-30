@@ -1,0 +1,126 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f2f2f2;
+  }
+  
+  .authBox {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .authLeft {
+    flex: 1;
+    background: #2bb191;
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .authLeft h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .authLeft p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .authRight {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .authRight h2 {
+    font-size: 28px;
+    color: #2bb191;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+  }
+  
+  .inputGroup input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f6f9f8;
+    font-size: 14px;
+  }
+  
+  .signupBtn {
+    width: 100%;
+    padding: 14px;
+    background-color: #2bb191;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .signupBtn:hover {
+    background-color: #249b7d;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 25px 0;
+    font-size: 14px;
+    color: #999;
+    position: relative;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #ccc;
+  }
+  
+  .divider::before {
+    left: 5%;
+  }
+  
+  .divider::after {
+    right: 5%;
+  }
+  
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .socialIcons img {
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .socialIcons img:hover {
+    transform: scale(1.1);
+  }
+  

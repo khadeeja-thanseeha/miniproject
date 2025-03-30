@@ -1,0 +1,82 @@
+/* Full-Screen Background */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100vw;
+    background: url('./med.jpeg') no-repeat center center/cover; /* Background image */
+}
+
+/* Content Box */
+.content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.741); /* Light transparent background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Logo */
+.logoContainer {
+    margin-bottom: 20px;
+    
+}
+
+.logoImage {
+    width: 150px;
+    height: auto;
+    background: none;
+
+}
+
+/* Background Div */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./med.jpeg') no-repeat center center/cover;
+    z-index: -1; /* Puts it behind content */
+}
+
+/* Headline */
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Button Styles */
+button {
+    display: block;
+    width: 220px;
+    padding: 12px;
+    margin: 10px auto;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Doctor Button */
+.doctorBtn {
+    background-color: #007bff;
+    color: white;
+}
+
+.doctorBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Patient Button */
+.patientBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+.patientBtn:hover {
+    background-color: #1e7e34;
+}
