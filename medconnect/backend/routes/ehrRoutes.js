@@ -2,6 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const EHRRecord = require("../models/EHRRecord");
 const router = express.Router();
+const fs = require("fs");
+const path = require("path");
 
 // Multer configuration for file storage
 const storage = multer.diskStorage({
@@ -26,7 +28,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
       console.error("No file uploaded!");
       return res.status(400).json({ error: "No file uploaded" });
     }
-    
+
     const { patientEmail, recordType, format } = req.body;
     if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
@@ -55,5 +57,31 @@ router.get("/:email", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch records" });
   }
 });
+
+// Delete Record by ID
+router.delete("/delete/:id", async (req, res) => {
+    try {
+      const ehrRecord = await EHRRecord.findById(req.params.id);
+  
+      if (!ehrRecord) {
+        return res.status(404).json({ message: "Record not found" });
+      }
+  
+      // Delete the file from the uploads folder
+      const filePath = path.join(__dirname, "..", "uploads", ehrRecord.fileName);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath); // Remove file from storage
+      }
+  
+    // Delete the record from the database
+      await EHRRecord.findByIdAndDelete(req.params.id);
+  
+      res.status(200).json({ message: "Record deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting record:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+  
 
 module.exports = router;

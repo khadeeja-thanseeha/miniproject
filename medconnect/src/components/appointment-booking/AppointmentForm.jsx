@@ -14,7 +14,7 @@ const AppointmentForm = () => {
 
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
-
+  
   // Fetch booked appointments on component mount
    // Fetch doctors for dropdown
    useEffect(() => {

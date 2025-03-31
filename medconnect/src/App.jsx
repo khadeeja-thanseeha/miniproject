@@ -12,6 +12,7 @@ import Appointments from "./components/appointment-list/Appointments";
 import DoctorDetails from "./components/doctor-details/DoctorDetails";
 import Patientsignup from "./components/signup/Patientsignup";
 import Doctorsignup from "./components/dsignup/Doctorsignup";
+import EHRRecords from "./components/appointment-list/EHRRecords";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/doctor-details" element={<DoctorDetails />} />
         <Route path="/signup" element={<Patientsignup />} />
         <Route path="/dsignup" element={<Doctorsignup />} />
+        <Route path="/view-records/:email" element={<EHRRecords />} />
       </Routes>
     </Router>
   );

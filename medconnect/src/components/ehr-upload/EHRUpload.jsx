@@ -69,6 +69,20 @@ const EHRUpload = () => {
     }
   };
 
+  // Handle Delete Record
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this record?")) return;
+
+    try {
+      await axios.delete(`http://localhost:5000/api/ehr/delete/${id}`);
+      alert("Record deleted successfully!");
+      fetchRecords(); // Refresh the records list
+    } catch (error) {
+      alert("Failed to delete record.");
+      console.error("Error deleting record:", error);
+    }
+  };
+
   return (
     <div className="upload-container">
       <h2>Electronic Health Records (EHR) Manager</h2>
@@ -127,6 +141,10 @@ const EHRUpload = () => {
                 <a href={`http://localhost:5000/uploads/${record.fileName}`} target="_blank" rel="noopener noreferrer">
                   View
                 </a>
+                &nbsp; | &nbsp;
+                <button onClick={() => handleDelete(record._id)} style={{ color: "red", cursor: "pointer" }}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
