@@ -29,6 +29,7 @@ const Appointments = () => {
             <th>Patient Name</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Meeting Code</th>
             <th>View Records</th>
           </tr>
         </thead>
@@ -39,6 +40,7 @@ const Appointments = () => {
               <td>{appointment.patientName}</td>
               <td>{appointment.date}</td>
               <td>{appointment.time}</td>
+              <td><strong>{appointment.meetingCode}</strong></td>
               <td>
                 <Link to={`/view-records/${encodeURIComponent(appointment.email)}`} className={styles.viewLink}>
                   View Records

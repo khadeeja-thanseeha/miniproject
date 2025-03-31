@@ -31,10 +31,10 @@ const DoctorDashboard = () => {
         {/* Action Buttons */}
         <div className={styles.actionButtons}>
           {/* Doctor Details */}
-          <div className={styles.button} onClick={() => navigate("/doctor-details")}>
+          {/*<div className={styles.button} onClick={() => navigate("/doctor-details")}>
             <FaUserMd className={styles.icon} />
             <p>Doctor Details</p>
-          </div>
+          </div>*/}
 
           {/* Appointments (Combining Appointment Booking & EHR Records) */}
           <div className={styles.button} onClick={() => navigate("/appointment-list")}>

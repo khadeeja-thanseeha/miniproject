@@ -30,10 +30,10 @@ const PatientDashboard = () => {
 
         {/* Action Buttons */}
         <div className={styles.actionButtons}>
-          <div className={styles.button} onClick={() => navigate("/patient-details")}>
+          {/*<div className={styles.button} onClick={() => navigate("/patient-details")}>
             <FaUser className={styles.icon} />
             <p>Patient Details</p>
-          </div>
+          </div>*/}
           <div className={styles.button} onClick={() => navigate("/ehr-upload")}>
             <FaNotesMedical className={styles.icon} />
             <p>Patient Health Care Records</p>

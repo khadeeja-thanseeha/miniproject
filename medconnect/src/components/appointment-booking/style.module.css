@@ -1,3 +1,5 @@
+
+
 .container {
   width: 50%;
   margin: auto;
@@ -5,12 +7,15 @@
   padding: 20px;
   background: #f4f4f4;
   border-radius: 10px;
+  overflow-y: scroll; 
+  overflow-x: scroll;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow:scroll;
 }
 
 input, textarea, button {
@@ -34,6 +39,7 @@ button:hover {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  overflow:scroll;
 }
 
 .appointmentTable th, .appointmentTable td {

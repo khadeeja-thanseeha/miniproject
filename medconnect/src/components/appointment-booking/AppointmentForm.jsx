@@ -14,6 +14,7 @@ const AppointmentForm = () => {
 
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
+  const [meetingCode, setMeetingCode] = useState("");
   
   // Fetch booked appointments on component mount
    // Fetch doctors for dropdown
@@ -50,6 +51,7 @@ const AppointmentForm = () => {
     try {
       const response = await axios.post("http://localhost:5000/api/appointments/book", formData);
       alert(response.data.message);
+      setMeetingCode(response.data.meetingCode);
       fetchAppointments();
     } catch (error) {
       alert(error.response.data.error || "Failed to book appointment");
@@ -92,6 +94,7 @@ const AppointmentForm = () => {
             <th>Doctor</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Meeting Code</th>
             <th>Reason</th>
           </tr>
         </thead>
@@ -103,6 +106,7 @@ const AppointmentForm = () => {
               <td>{appointment.doctor}</td>
               <td>{appointment.date}</td>
               <td>{appointment.time}</td>
+              <td><strong>{appointment.meetingCode}</strong></td> 
               <td>{appointment.reason}</td>
             </tr>
           ))}

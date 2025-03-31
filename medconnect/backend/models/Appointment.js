@@ -7,6 +7,7 @@ const appointmentSchema = new mongoose.Schema({
   date: String,
   time: String,
   reason: String,
+  meetingCode: { type: String, unique: true, required: true },
 });
 
 module.exports = mongoose.model("Appointment", appointmentSchema);
