@@ -102,7 +102,7 @@ const PatientDetails = () => {
             <input type="number" name="height" placeholder="Enter height..." onChange={handleChange} required />
           </div>
 
-          <button type="submit" className="submit-btn" onClick={() => navigate("/patient-dashboard")}>Submit</button>
+          <button type="submit" className="submit-btn" onClick={handleSubmit}>Submit</button>
         </form>
       </div>
     </div>

@@ -12,13 +12,26 @@ const AppointmentForm = () => {
     reason: "",
   });
 
+  const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
 
   // Fetch booked appointments on component mount
-  useEffect(() => {
+   // Fetch doctors for dropdown
+   useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/doctor");
+        setDoctors(response.data);
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
+      }
+    };
+
+    fetchDoctors();
     fetchAppointments();
   }, []);
 
+  // Fetch booked appointments
   const fetchAppointments = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/appointments");
@@ -35,11 +48,11 @@ const AppointmentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/appointments/book", formData);
-      alert("Appointment booked successfully!");
-      fetchAppointments(); // Refresh the appointments list
+      const response = await axios.post("http://localhost:5000/api/appointments/book", formData);
+      alert(response.data.message);
+      fetchAppointments();
     } catch (error) {
-      alert("Failed to book appointment");
+      alert(error.response.data.error || "Failed to book appointment");
     }
   };
 
@@ -49,11 +62,24 @@ const AppointmentForm = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input type="text" name="patientName" placeholder="Full Name" onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="text" name="doctor" placeholder="Doctor's Name" onChange={handleChange} required />
+        {/* Doctor Dropdown */}
+        <select name="doctor" onChange={handleChange} required>
+          <option value="">Select a doctor</option>
+            {doctors.length > 0 ? (
+              doctors.map((doc) => (
+                <option key={doc._id} value={`${doc.name} : ${doc.specialization}`}>
+                  {doc.name} : {doc.specialization}
+                </option>
+                ))
+            ) : (
+                <option disabled>Loading doctors...</option>
+                )}
+        </select>
+
         <input type="date" name="date" onChange={handleChange} required />
         <input type="time" name="time" onChange={handleChange} required />
         <textarea name="reason" placeholder="Reason for Appointment" onChange={handleChange} required></textarea>
-        <button type="submit">Book Appointment</button>
+        <button type="submit" onClick={handleSubmit}>Book Appointment</button>
       </form>
 
       {/* Display Booked Appointments */}

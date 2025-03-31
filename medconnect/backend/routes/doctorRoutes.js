@@ -49,7 +49,7 @@ router.post("/doctor-details", async (req, res) => {
       doctor.phoneNumber = phoneNumber;
       doctor.licenseNumber = licenseNumber;
       doctor.specialization = specialization;
-      doctor.availableDays = availableDays.split(",").map(day => day.trim());
+      doctor.availableDays = availableDays;
       doctor.slotsPerDay = slotsPerDay;
   
       await doctor.save();

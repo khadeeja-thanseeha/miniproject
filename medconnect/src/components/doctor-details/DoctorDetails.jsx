@@ -8,25 +8,29 @@ const DoctorDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email || "";
-  const [details, setDetails] = useState({
+  const [formData, setFormData] = useState({
     phoneNumber: "",
     licenseNumber: "",
     specialization: "",
-    availableDays: "",
+    availableDays: 0 ,
     slotsPerDay: 0,
   });
 
   const handleChange = (e) => {
-    setDetails({ ...details, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/doctors/details", { email, ...details });
-      navigate("/doctor-dashboard");
-    } catch (error) {
+      await axios.post("http://localhost:5000/api/doctor-details", { email, ...formData },{
+      headers: { "Content-Type": "application/json" }
+
+    });
+    navigate("/doctor-dashboard");
+  }
+     catch (error) {
       console.error("Details submission error:", error.response?.data || error);
     }
   };
@@ -64,11 +68,12 @@ const DoctorDetails = () => {
             <input type="number" name="slotsPerDay" placeholder="Slots Per Day" onChange={handleChange} required />
           </div>
 
-          <button type="submit" className="submit-btn" onClick={() => navigate("/doctor-dashboard")}>Submit</button>
+          <button type="submit" className="submit-btn" onClick={handleSubmit}>Submit</button>
         </form>
       </div>
     </div>
   );
 };
+
 
 export default DoctorDetails;

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./EHRUpload.module.css";
 
 const EHRUpload = () => {
@@ -7,6 +8,16 @@ const EHRUpload = () => {
   const [recordType, setRecordType] = useState("");
   const [fileFormat, setFileFormat] = useState("PDF");
   const [file, setFile] = useState(null);
+  const [patientEmail, setPatientEmail] = useState(""); // Email entered by the user
+
+
+  useEffect(() => {
+    if (patientEmail) {
+      fetchRecords();
+    }
+  }, [patientEmail]);
+  
+
 
   const allowedExtensions = {
     PDF: "pdf",
@@ -15,34 +26,61 @@ const EHRUpload = () => {
     DOCX: "docx",
   };
 
+   // Fetch records from backend
+  const fetchRecords = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/ehr/${patientEmail}`);
+      setRecords(response.data);
+    } catch (error) {
+      console.error("Error fetching records:", error);
+    }
+  };
+
   
-  const handleUpload = () => {
+  const handleUpload = async () => {
+    const fileUrl = `http://localhost:5000/uploads/${file.name}`;
     if (!file) {
       alert("Please select a file to upload.");
       return;
     }
-
     const fileExtension = file.name.split(".").pop().toLowerCase();
     if (fileExtension !== allowedExtensions[fileFormat]) {
       alert(`Invalid file format! Please upload a ${fileFormat} file.`);
       return;
     }
 
-    const newRecord = {
-      name: file.name,
-      type: recordType,
-      format: fileFormat,
-      url: URL.createObjectURL(file),
-    };
-    setRecords([...records, newRecord]);
-    setShowForm(false);
-    setRecordType("");
-    setFile(null);
+    const formData = new FormData();
+    formData.append("patientEmail", patientEmail);
+    formData.append("recordType", recordType);
+    formData.append("format", fileFormat);
+    formData.append("file", file);
+
+    try {
+      await axios.post("http://localhost:5000/api/ehr/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("File uploaded successfully!");
+      fetchRecords();
+      setShowForm(false);
+      setRecordType("");
+      setFile(null);
+    } catch (error) {
+      alert("Upload failed.");
+    }
   };
 
   return (
     <div className="upload-container">
       <h2>Electronic Health Records (EHR) Manager</h2>
+      {/* Email Input Field */}
+      <label>Enter Patient Email:</label>
+      <input
+        type="email"
+        placeholder="Enter email"
+        value={patientEmail}
+        onChange={(e) => setPatientEmail(e.target.value)}
+        required
+      />
       <button onClick={() => setShowForm(true)}>+ Add Records</button>
       {showForm && (
         <div className="file-inputs">
@@ -82,11 +120,11 @@ const EHRUpload = () => {
         <tbody>
           {records.map((record, index) => (
             <tr key={index}>
-              <td>{record.name}</td>
-              <td>{record.type}</td>
+              <td>{record.fileName}</td>
+              <td>{record.recordType}</td>
               <td>{record.format}</td>
               <td>
-                <a href={record.url} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:5000/uploads/${record.fileName}`} target="_blank" rel="noopener noreferrer">
                   View
                 </a>
               </td>
