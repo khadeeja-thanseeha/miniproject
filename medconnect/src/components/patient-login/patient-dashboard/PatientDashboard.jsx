@@ -15,7 +15,6 @@ const PatientDashboard = () => {
           <span className={styles.logoText}>medconnect</span>
         </div>
         <div className={styles.userInfo}>
-          <span>User name</span>
           <a href="/" className={styles.logout}>Logout</a>
         </div>
       </div>
