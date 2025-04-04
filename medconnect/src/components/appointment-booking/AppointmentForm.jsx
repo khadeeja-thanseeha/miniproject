@@ -15,6 +15,26 @@ const AppointmentForm = () => {
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [meetingCode, setMeetingCode] = useState("");
+
+  const generateTimeSlots = () => {
+    const slots = [];
+    const times = [
+      { start: 9, end: 12 }, // Morning session
+      { start: 14, end: 16 }, // Afternoon session (2 PM to 4 PM)
+    ];
+  
+    times.forEach(({ start, end }) => {
+      for (let hour = start; hour < end; hour++) {
+        ["00", "15", "30", "45"].forEach((minutes) => {
+          slots.push(`${hour}:${minutes}`);
+        });
+      }
+    });
+  
+    return slots;
+  };
+
+  const availableTimeSlots = generateTimeSlots();
   
   // Fetch booked appointments on component mount
    // Fetch doctors for dropdown
@@ -78,8 +98,15 @@ const AppointmentForm = () => {
                 )}
         </select>
 
-        <input type="date" name="date" onChange={handleChange} required />
-        <input type="time" name="time" onChange={handleChange} required />
+        <input type="date" name="date" min={new Date().toISOString().split("T")[0]} onChange={handleChange} required/>
+        <select name="time" onChange={handleChange} required>
+        <option value="">Select a time</option>
+            {availableTimeSlots.map((slot, index) => (
+                  <option key={index} value={slot}>
+            {slot}
+        </option>
+          ))}
+        </select>
         <textarea name="reason" placeholder="Reason for Appointment" onChange={handleChange} required></textarea>
         <button type="submit" onClick={handleSubmit}>Book Appointment</button>
       </form>

@@ -15,7 +15,6 @@ const DoctorDashboard = () => {
           <span className={styles.logoText}>medconnect</span>
         </div>
         <div className={styles.userInfo}>
-          <span>Doctor Name</span>
           <a href="/" className={styles.logout}>Logout</a>
         </div>
       </div>

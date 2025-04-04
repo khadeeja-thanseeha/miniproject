@@ -25,7 +25,6 @@ const Appointments = () => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Patient ID</th>
             <th>Patient Name</th>
             <th>Date</th>
             <th>Time</th>
@@ -36,7 +35,6 @@ const Appointments = () => {
         <tbody>
           {appointments.map((appointment) => (
             <tr key={appointment._id}>
-              <td>{appointment.patientId}</td>
               <td>{appointment.patientName}</td>
               <td>{appointment.date}</td>
               <td>{appointment.time}</td>
