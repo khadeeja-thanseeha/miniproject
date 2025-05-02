@@ -116,6 +116,10 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 Khadeeja Thanseeha V 
-GitHub: @khadeeja-thanseeha
+Mayookha B
+Merina Jaya George
+Prarthana Sajith B
+
+GitHub: @khadeeja-thanseeha @mayookha-b @prarthana-sajith @merina2003
 
 ---
