@@ -68,6 +68,14 @@ const AppointmentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if selected date & time are already booked
+    const isTimeSlotTaken = appointments.some(
+        (appointment) => appointment.date === formData.date && appointment.time === formData.time
+    );
+    if (isTimeSlotTaken) {
+        alert("This time slot is already booked. Please choose another time.");
+        return; // Stop form submission
+    }
     try {
       const response = await axios.post("http://localhost:5000/api/appointments/book", formData);
       alert(response.data.message);

@@ -112,10 +112,14 @@ const EHRUpload = () => {
             <option value="JPG">JPG</option>
             <option value="PNG">PNG</option>
             <option value="DOCX">DOCX</option>
+            <option value="JPEG">JPEG</option>
+            <option value="TIFF">TIFF</option>
+            <option value="GIF">GIF</option>
+            <option value="DICOM">DICOM</option>
           </select>
 
           <label>Upload File:</label>
-          <input type="file" onChange={(e) => setFile(e.target.files[0])} accept=".pdf,.jpg,.png,.docx" />
+          <input type="file" onChange={(e) => setFile(e.target.files[0])} accept=".pdf,.jpg,.png,.docx,.jpeg,.tiff,.gif,.dicom,.dcm" />
 
           <button onClick={handleUpload}>Upload</button>
         </div>

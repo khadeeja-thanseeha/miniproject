@@ -14,6 +14,7 @@ const DoctorLogin = () => {
     try {
       const response = await axios.post("http://localhost:5000/api/doctor-login", { email, password });
       if (response.status === 200) {
+        localStorage.setItem("doctorEmail", response.data.email);
         navigate("/doctor-dashboard");
       }
     } catch (error) {
