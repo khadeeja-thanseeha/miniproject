@@ -1,4 +1,5 @@
-# 🛠️ MedConnect : Cloud Based Health Care Management System
+
+# 🛠️ MedConnect : Health Care Management System
 
 This is a full-stack web application using **React.js** (frontend), **Node.js + Express.js** (backend), and **MongoDB** (database), with integrated **WebRTC** support for real-time video conferencing. The app allows user registration, data retrieval, and peer-to-peer video communication.
 
@@ -20,7 +21,7 @@ This is a full-stack web application using **React.js** (frontend), **Node.js + 
 - **Frontend**: React.js, Axios, WebRTC, Socket.IO-client
 - **Backend**: Node.js, Express.js, Socket.IO
 - **Database**: MongoDB (via Mongoose)
-- **Dev Tools**: Visual Studio Code, Postman, npm
+- **Dev Tools**: Visual Studio Code, npm
 
 ---
 
@@ -38,13 +39,13 @@ cd backend
 
 npm install
 
-#### Create a .env file:
+#### *_2.1 Create a .env file_*:
 
 MONGO_URI=your_mongodb_connection_string
 
 PORT=5000
 
-#### Start the backend server:
+#### *_2.2 Start the backend server_*:
 
 node server.js
 
@@ -57,6 +58,8 @@ cd ../frontend
 npm install
 
 npm start
+
+##
 
 The frontend provides UI for:
 
@@ -94,11 +97,11 @@ The WebRTC module allows peer-to-peer video conferencing between users using a m
 - Endpoint: /api/users/register
   
 - Payload:
-{
+     {
   "name": "John Doe",
   "email": "john@example.com",
-  "password": "mypassword"
-}
+  "password": "mypassword" }
+
 ---
 
 # 🔧 Future Improvements
